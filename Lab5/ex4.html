@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+Hi there! I am approximately <div id ="ageDiv"></div> The number of months since my last birthday is;
+
+<br>
+    <div id="ageDiv">
+     <script>
+
+         var firstname = "Tingwei";
+         var middlename = "David";
+         var lastname = "Liao";
+
+    var fullname = firstname + " " + middlename + " " +  lastname
+    document.write(fullname);
+
+
+
+    var fullname = '<br>' + firstname + '<br>' + middlename + '<br>' + lastname + '<br>' + firstname[0] + "." + middlename[0] + "." + lastname[0] + "." + '<br>';
+    document.write(fullname);
+
+
+    var myGloriousFullName = '<br>' + '<b>' + firstname + '</b><br>' + '<em>' + middlename + '</em><br>' + '<font size="150%">' + lastname + '</font><br>';
+    var nicename = '<br>' + firstname.bold() + '<br>' + middlename.italics() + '<br>' + lastname.fontsize(40) + '<br>';        
+    document.write(myGloriousFullName);
+
+
+
+    var amount = 300;
+    var tax_rate = .0413;
+    var tax = tax_rate * amount;
+    
+    document.write('The tax on ' + firstname + '’s bill is $' + tax.toFixed(2));
+
+
+
+
+     </script>
+     <br> Bye now.   
+     
+    </div>
+
+</body>
+</html>
