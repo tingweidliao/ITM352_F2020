@@ -1,4 +1,4 @@
-var number = 1; // counter for age
+var number = 0; // counter for age
 var myAge = 8; // my age
 
 console.log("Silly counting program for ex2");
