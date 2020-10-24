@@ -10,6 +10,14 @@ var my_kid1 = {
 
 };
 
+/*
+for (attrib in my_kid1) {
+    console.log(my_kid1["attrib"]);
+    console.log(my_kid1.attrib);
+    console.log(my_kid1["attrib"]);
+}
+*/
+
 var my_kid2 = {
     "name": "Goober",
     "age": 2,
@@ -49,3 +57,13 @@ var my_kid2 = {
 
 }
 */
+
+for (empl of employees) {
+    if (i % 2 ==0)
+    {
+        console.log("Team1 Member: " + empl);
+    } else
+    {
+        console.log("Team2 Member: " + empl);
+    }
+}
