@@ -1,0 +1,68 @@
+<script>
+
+
+    // Product 1
+
+    var product1 = { Deckname: "Duelist Evolution - Dark Magician", price: "$" + 102.55, image: "https://ygoprodeck.com/wp-content/uploads/2020/11/DuelitEvolution-Deck1-deck-122123.jpg" };
+
+    // Product 2
+    var product2 = { Deckname: "Cyber Dragon 2020", price: "$" + 307.06, image: "https://ygoprodeck.com/wp-content/uploads/2020/04/CyberDragonDeck2020-deck-80157.png" };
+
+
+    // Product 3
+    var product3 = { Deckname: "Blue-Eyes 2020", price: "$" + 305.11, image: "https://ygoprodeck.com/wp-content/uploads/2020/01/Blue-deck-69017.png" };
+
+
+    // Product 4
+    var product4 = { Deckname: "Exodia 2020", price: "$" + 132.60, image: "https://ygoprodeck.com/wp-content/uploads/2020/02/ExodiaDeck2020-deck-75593.png" };
+
+
+    // Product 5
+    var product5 = { Deckname: "Subterror Princess", price: "$" + 250.29, image: "https://ygoprodeck.com/wp-content/uploads/2020/11/SubterrorPrince-deck-121727.jpg"}
+
+    var products = [product1, product2, product3, product4, product5];
+
+</script>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Yugioh Card Store</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Cherry+Swash|Raleway" rel="stylesheet">
+
+    <link href="products-style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1>Anti-Meta Cards</h1>
+    </header>
+
+    <main>
+
+        <script>
+
+            for (i = 0; i <= products.length; i++) {
+                document.write(`<section class="item">
+                <h2>${products[i].Deckname}</h2>
+                <p>${products[i].price}</p>
+                <img src=${products[i].image}>
+            </section>`);
+
+            }
+        </script>
+
+    </main>
+    </div>
+    <footer>
+        <h1>
+            Your One Stop Shop for Last Month's Most Popular Decks
+        </h1>
+    </footer>
+</body>
+
+</html>
