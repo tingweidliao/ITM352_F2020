@@ -3,7 +3,7 @@
 var express = require('express');
 var myParser = require("body-parser");
 var fs = require('fs');
-var products = require("./products.json");
+var products = require("./product_data.js");
 
 var app = express(); //declaring express as app
 
@@ -35,7 +35,7 @@ app.post("/process_invoice", function (request, response, next) {
                 subtotal += extended_price;
                 str += (`
       <tr>
-        <td width="43%">${products[i].brand}</td>
+        <td width="43%">${products[i].item}</td>
         <td align="center" width="11%">${a_qty}</td>
         <td width="13%">\$${products[i].price}</td>
         <td width="54%">\$${extended_price}</td>
@@ -75,7 +75,7 @@ app.get("/store", function (request, response) {
         for (i = 0; i < products.length; i++) {
             str += `
                 <section class="item">
-                    <h2>${products[i].brand}</h2>
+                    <h2>${products[i].product}</h2>
                     <p>$${products[i].price}</p>
                     <label id="quantity${i}_label"}">Quantity</label>
                     <input type="text" placeholder="0" name="quantity${i}" 

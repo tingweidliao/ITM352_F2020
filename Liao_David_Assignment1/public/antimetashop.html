@@ -60,35 +60,87 @@
 </script>
 
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Anti-Meta Cards</title>
+  <title>Anti-Meta Yugioh Shop</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Cherry+Swash|Raleway" rel="stylesheet">
-
-    <link href="products-style.css" rel="stylesheet">
-
+  <link href="products-style.css" rel="stylesheet">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Code & page template taken from w3 schools @ https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_store&stacked=h */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
 </head>
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Anti-Meta Yugioh Shop</h1>      
+    <p>Counter the meta like never before!</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="./index.html">Home</a></li>
+        <li><a href="./antimetashop.html">Products</a></li>
+        <li><a href="./contactme.html">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 
 <body>
     <form name="product_selection_form" action="" method="GET">
-        <header>
-            <h1>Anti-Meta Cards</h1>
-        </header>
+        
         <div>
             <main>
                 <script>
                     for (i = 0; i < products.length; i++) {
                         document.write(`
                             <section class="item">
-                                <h2>${products[i].name}</h2>
+                                <h2>${products[i].product}</h2>
                                 <p>$${products[i].price}</p>
                                 <label id="quantity${i}_label"}">Quantity</label>
                                 <input type="text" placeholder="0" name="quantity${i}" 
                                 onkeyup="checkQuantityTextbox(this);">
                                 <img src="${products[i].image}">
+                                <a href="${products[i].link}" 
+                                title="Decklist">>Decklist<</a>
+                            
                             </section>
                         `);
                     }    
@@ -96,9 +148,7 @@
             </main>
         </div>
         <footer>
-            <h1>
-                Enjoy destroying this month's meta!
-            </h1>
+           
 
             <input type= "submit" value ="purchase!" name ="purchase_submit">
 
@@ -106,4 +156,16 @@
     </form>
 </body>
 
+
+<footer class="container-fluid text-center">
+  <p> <h1>
+    Enjoy destroying this month's meta!
+</h1></p>  
+  <form class="form-inline">Get deals:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+    <button type="button" class="btn btn-danger">Sign Up</button>
+  </form>
+</footer>
+
+</body>
 </html>
