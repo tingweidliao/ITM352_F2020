@@ -1,6 +1,6 @@
 <!--Anti-Meta Registration Page-->
 
-<!--from lab 14 example and from ww3schools.com-->
+<!--from lab 14 example and retrieved from ww3schools.com-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,9 +23,10 @@
     <link rel="stylesheet" href="./stylesheets/login&registration.css">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Oswald">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>Register an Account!</title>
 
-    <!--this sets the background image and helps style the page-->
+<!--this sets the background image and helps style the page-->
 
     <style>
        body {
@@ -39,12 +40,36 @@
     </style>
 </head>
 
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="./index.html">Home</a></li>
+          <li><a href="./antimetashop.html">Products</a></li>
+          <li><a href="./contactme.html">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="registration.html"><span class="glyphicon glyphicon-user"></span> Login/ Make Account</a></li>
+          <li><a href="Invoice.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
 <body>
     
     <h1><mark>  Register an account with Anti-Meta Yugioh before your purchase!  
     </mark>
     </h1>
-    <!--creates the form for users to register, used code from w3schools.com-->
+    <!--creates the form for users to register-->
     <div id='account'>
         <form method="POST" action="process_register" name="Register">
             <input type="text" name="fullname" size="40" pattern="[a-zA-Z]+[ ]+[a-zA-Z]+"

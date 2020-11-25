@@ -28,12 +28,41 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Anti-Meta Yugioh Invoice</title>
 
-  <link href="./stylesheets/products-style.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/Liao_David_Assignment2/public/stylesheets/products-style.css">
+
 
 </head>
 
+
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="./index.html">Home</a></li>
+          <li><a href="./antimetashop.html">Products</a></li>
+          <li><a href="./contactme.html">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="registration.html"><span class="glyphicon glyphicon-user"></span> Login/ Make Account</a></li>
+          <li><a href="Invoice.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  
 <body>
 
+  
   <header>
     <h1>Your Receipt at Anti-Meta Yugioh</h1>
   </header>
@@ -71,7 +100,7 @@
 
         // Compute shipping
         if (subtotal <= 50) {
-          shipping = 2;
+          shipping = 0;
         }
         else if (subtotal <= 100) {
           shipping = 5;
@@ -116,10 +145,24 @@
   </table>
   <div>
     <br><b>
-      OUR SHIPPING POLICY IS:A subtotal $0 - $49.99 will be $2 shipping
-      A subtotal $50 - $99.99 will be $5 shipping
-      Subtotals over $100 will be charged 5% of the subtotal amount
+      OUR SHIPPING POLICY IS:A subtotal $0 - $50 will be free shipping.<Br>
+      A subtotal $50 - $99.99 will be $5 shipping.<br>
+      Subtotals over $100 will be charged 5% of the subtotal amount.
     </b> </div>
+
+
+    <style>
+      
+      body {
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY1Pk4EwBPz_7d_rKsOSNLObovS5qIQbjYRg&usqp=CAU');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 50% 40%;
+        background-position: bottom;
+        
+      }
+      </style>
+
 
 <footer>
   <h1>

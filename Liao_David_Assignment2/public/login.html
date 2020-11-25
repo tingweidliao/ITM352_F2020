@@ -1,5 +1,5 @@
 <!--Anti-Meta Login Page-->
-<!--used help from lab 14 and ww3schools.com-->
+<!--used help from lab 14 and retrieved from ww3schools.com-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,8 +21,12 @@
     <link rel="stylesheet" href="./stylesheets/login&registration.css">
     <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>Login!</title>
     <style>
+
+/* this sets the background image and helps style the page */
+
     body {
         Background-image: url(https://i.pinimg.com/736x/ec/57/15/ec5715a06d7d34c863db74d72af633e8--anime-life-dark.jpg);
         background-repeat: no-repeat;
@@ -32,6 +36,30 @@
        };
     </style>
 </head>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="./index.html">Home</a></li>
+          <li><a href="./antimetashop.html">Products</a></li>
+          <li><a href="./contactme.html">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="registration.html"><span class="glyphicon glyphicon-user"></span> Login/ Make Account</a></li>
+          <li><a href="Invoice.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
 
 <body> 
   
@@ -52,6 +80,8 @@
         
        login.action += document.location.search; //saves the query string from the products page for the invoice 
     </script>
+
+       <!--this is the button that will take users to login if they already have an account-->
     <input type="button" name="newuser" value="New User Register Here!" class="btn2"
         onclick="window.location='./registration.html' + document.location.search;">
 
