@@ -1,4 +1,9 @@
+<!--David Liao
+Invoice Page
+2 Dec 2020 -->
+
 <script src="./product_data.js" type="text/javascript"></script>
+<script src="./user_data.json" type="json"></script>
 <script> 
 
   // code copied from assignment 1 example 
@@ -14,9 +19,12 @@
       }
     }
   } else {
-    document.write('no form submitted');
-  }
-  console.log(quantities);
+    window.location.href = './antimetashop.html'; // if there is nothing entered in any of the textboxes, send the user back to the product display page to select quantitiy amounts
+        }
+        if (params.has('username')) {
+          var name = params.get('name');
+          var username = params.get('username');
+        }
 </script>
 
 <!DOCTYPE html>
@@ -30,8 +38,7 @@
 
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/Liao_David_Assignment2/public/stylesheets/products-style.css">
-
+  <link rel="stylesheet" href="./stylesheets/products-style.css">
 
 </head>
 
@@ -54,6 +61,24 @@
           <li><a href="registration.html"><span class="glyphicon glyphicon-user"></span> Login/ Make Account</a></li>
           <li><a href="Invoice.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
         </ul>
+        <br>
+
+        <script>
+          //this section identifies the user from their account 
+          if (name != 'undefined' && name != '') {
+            document.write (`
+              <h3 align="center"> Mahalo,
+                <br> ${name} for purchasing from Anti-Meta Shop!
+                <br> <h3>
+            `)
+          } else {
+            document.write (` <h3 align="center"> Mahalo,
+              <br> ${username} for purchasing from Anti-Meta Shop!
+                <br> <h3>
+            `)
+          }
+        </script>
+
       </div>
     </div>
   </nav>
