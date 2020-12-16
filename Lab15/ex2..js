@@ -43,7 +43,7 @@ app.get('/', function (req, res) {
 
 app.get("/set_cookie", function (request, response) {
     // Set a cookie called myname to be my name
-    response.cookie('myname', 'Rick Kazman', { maxAge: 10000 }).send('cookie set');
+    response.cookie('myname', 'David Liao', { maxAge: 10000 }).send('cookie set');
 });
 
 app.get("/use_cookie", function (request, response) {

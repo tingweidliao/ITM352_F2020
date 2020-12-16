@@ -52,7 +52,7 @@ app.get('/', function (req, res) {
 // Simple example of settin a cookie
 app.get("/set_cookie", function (request, response) {
     // Set a cookie called myname to be my name
-    response.cookie('myname', 'Rick Kazman', { maxAge: 10000 }).send('cookie set');
+    response.cookie('myname', 'Tingwei Liao', { maxAge: 10000 }).send('cookie set');
 });
 
 // Using the cookie that was set in /set_cookie

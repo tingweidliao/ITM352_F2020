@@ -1,0 +1,160 @@
+<!-- David Liao
+HTML page for the main page containing information on Anti-meta Yugioh 
+2 Dec 2020 -->
+
+<script src="./products.js" type="text/javascript">
+
+    //links it to products array 
+
+</script>
+<script>
+
+    // retrieved from assignment 1 example 
+
+    function isNonNegInt(q, return_errors = false) { // this function checks if customer input in textbox is valid or invalid
+
+
+        errors = []; // assume no errors at first
+        if (q == '') q = 0; //sets blank inputs to the quantitiy of 0 
+        if (Number(q) != q) errors.push('<font color="red">Not a number!</font>'); // Check if string is a number value
+        else if (q < 0) errors.push('<font color="red">Negative value!</font>'); // Check if the string is non-negative
+        else if (parseInt(q) != q) errors.push('<font color="red">Not a full value!</font>'); // Check that it is an integer
+        return return_errors ? errors : (errors.length == 0);
+    }
+
+    // this function checks if customer input quantity is in the textbox
+
+    function checkQuantityTextbox(theTextbox) {
+        errs = isNonNegInt(theTextbox.value, true);
+        if (errs.length == 0) errs = ['You want:']; //changes it to say you want ___
+        if (theTextbox.value.trim() == '') errs = ['Quantity'];
+        document.getElementById(theTextbox.name + '_label').innerHTML = errs.join(", ");
+    }
+    window.onload = function () {
+        let params = (new URL(document.location)).searchParams; // get the query string which has the form data
+        // form was submitted so check that quantities are valid then redirect to invoice if ok.
+        if (params.has('submitPurchase')) {
+            has_errors = false; // assume quantities are valid from the start
+            total_qty = 0; // need to check if something was selected so we will look if the total > 0
+            //For every product in the array display its image and name and list price
+            for (i = 0; i < products.length; i++) {
+                if (params.has(`quantity${i}`)) {
+                    a_qty = params.get(`quantity${i}`);
+                    // make textboxes sticky in case of invalid data
+                    product_main_display[`quantity${i}`].value = a_qty;
+                    total_qty += a_qty;
+                    if (!isNonNegInt(a_qty)) {
+                        has_errors = true; // invalid quantity
+                        checkQuantityTextbox(product_main_display[`quantity${i}`]); // show where the error is
+                    }
+                }
+            }
+            // Now respond to errors or redirect to invoice if all is ok
+            if (has_errors) {
+                alert("Please enter only valid quantities!");
+            } else if (total_qty == 0) { // no quantity selections
+                alert("Please select some quantities!");
+            } else { // all good to go!
+                window.location = `./invoice.html${document.location.search}`; //Redirects itself to invoice
+                window.stop;
+            }
+        }
+    }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Anti-Meta Yugioh Shop</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      
+        <link href="./stylesheets/products-style1.css" rel="stylesheet">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+          /* Code & page template taken from w3 schools @ https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_store&stacked=h */ 
+          .navbar {
+            margin-bottom: 50px;
+            border-radius: 0;
+          }
+          
+          /* Remove the jumbotron's default bottom margin */ 
+           .jumbotron {
+            margin-bottom: 0;
+          }
+         
+          /* Add a gray background color and some padding to the footer */
+          footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+          }
+        </style>
+      </head>
+
+<body>
+    <!--creates the navigation bar-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="./index.html">Home</a></li>
+              <li><a href="./products_display.html">Products</a></li>
+              <li><a href="./contactme.html">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Login/ Make Account</a></li>
+              <li><a href="Invoice.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--creates the product display page with product name, image, price and section for quantity-->
+    <form name="product_main_display" action="/process_purchase" method="POST">
+        <div>
+            <main>
+                <script>
+                    for (i = 0; i < products.length; i++) {
+                        document.write(`
+                                <section class="item">
+                                    <h2>${products[i].product}</h2>
+                                    <br><img src="${products[i].image}">
+                                    <p>$${products[i].price}</p>
+                                    <label id="quantity${i}_label"}">Quantity</label>
+                                    <input type="text" placeholder="0" name="quantity${i}" 
+                                    onkeyup="checkQuantityTextbox(this);">
+                
+                                </section>
+                            `);
+                    }      
+                </script>
+            </main>
+        </div>
+        <footer>
+            <!--creates the purchase button-->
+            <input type="submit" value="Purchase!" name="submitPurchase" class=btn>
+        </footer>
+    </form>
+
+<!--  Email signup for news alert. Code taken from w3 schools -->
+
+<footer class="container-fluid text-center">
+    <p> <h1>
+      Enjoy destroying this month's meta!
+  </h1></p>  
+    <form class="form-inline">Alert me for next month's anti-meta:
+      <input type="email" class="form-control" size="50" placeholder="Email Address">
+     <a href='./confirm_email.html'><button type="button" class="btn btn-danger">Sign Up</button></a> 
+    </form>
+  </footer>
+
+</body>
+</html>

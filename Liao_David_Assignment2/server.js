@@ -3,7 +3,7 @@
 // 2 Dec 2020
 //taken from lab 13, 14 proccess login js. and Professor Kazman. 
 
-var data = require('./public/product_data.js'); //load products.js file and set to variable 'data'
+var data = require('./public/products.js'); //load products.js file and set to variable 'data'
 var products_array = data.products; //set variable 'products_array' to the products array in the products.js file
 const queryString = require('query-string'); //read variable 'queryString' as the loaded query-string module
 var express = require('express'); //load and cache express module
@@ -19,7 +19,7 @@ app.all('*', function (request, response, next) { //for all request methods...
 
 app.use(myParser.urlencoded({ extended: true })); //get data in the body
 
-// login stuff starts here , Code borrowed from Alyssa Mencel
+// login stuff starts here , add more comments and reference//
 if (fs.existsSync(filename)) { //enuring that the variable filename exists
   stats = fs.statSync(filename) //gets the information from user_data.json
   console.log(filename + 'has' + stats.size + 'characters'); //recording the amount of characters in the console 
@@ -120,7 +120,7 @@ app.post("/process_register", function (req, res) {
         req.query.email = req.body.email;
 
         req.query.errors = errors.join(';');
-        res.redirect('registration.html?' + queryString.stringify(req.query));
+        res.redirect('register.html?' + queryString.stringify(req.query));
     }
 });
 
@@ -129,7 +129,7 @@ app.post("/process_purchase", function (request, response) {
     let POST = request.body; // data would be packaged in the body
 
     //check if quantities are nonnegative integers 
-    if (typeof POST['purchase_submit'] != 'undefined') {
+    if (typeof POST['submitPurchase'] != 'undefined') {
         var hasvalidquantities=true; // creating a varibale assuming that it'll be true
         var hasquantities=false
         for (i = 0; i < products.length; i++) {
@@ -145,7 +145,7 @@ app.post("/process_purchase", function (request, response) {
           return; //stops the function 
         }  
         else { 
-            response.redirect("./antimetashop" + stringified) 
+            response.redirect("./products_display.html?" + stringified) 
         }
     }
 });
@@ -161,4 +161,4 @@ function isNonNegInt(q, returnErrors = false) {
 }
 
 app.use(express.static('./public')); // root in the 'public' directory so that express will serve up files from here
-app.listen(8080, () => console.log(`listening on port 8080`)); //run the server on port 8080 and show it in the console
+app.listen(8080, () => console.log(`listening on port 8080`)); //run the server on port 8080 and show it in the consolenpm
