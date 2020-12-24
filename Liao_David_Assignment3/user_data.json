@@ -23,5 +23,10 @@
     "name": "Seto Kaiba",
     "password": "blueeyes",
     "email": "kaiba@hawaii.edu"
+  },
+  "Yugiboi": {
+    "name": "Yugi Moto",
+    "password": "rarara",
+    "email": "yugi@hawaii.edu"
   }
 }
