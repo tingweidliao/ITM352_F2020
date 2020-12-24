@@ -76,28 +76,28 @@ var yugioh = [
     {
         "name": "Blue-Eyes 2020",
         "price": 130.0,
-        "image": "./images/blueeyes.jpg",
+        "image": "./images/Blueeyes.jpg",
         "link": "https://ygoprodeck.com/blue-2/",
     },
     //yugioh product 4
     {
         "name": "Exodia 2020",
         "price": 130.0,
-        "image": "./images/exodiadeck.jpg",
+        "image": "./images/ExodiaDeck.jpg",
         "link": "https://ygoprodeck.com/exodia-deck-2020/",
     },
     //yugioh product 5
     {
         "name": "Subterror Princess",
         "price": 250.0,
-        "image": "./images/subterrorprince.jpg",
+        "image": "./images/SubterrorPrince.jpg",
         "link": "https://ygoprodeck.com/?s=subterror+princess",
     },
     //yugioh product 6
     {
         "name": "Control Gravekeeper",
         "price": 300.0,
-        "image": "./images/controlgravekeeper.jpg",
+        "image": "./images/ControlGravekeeper.jpg",
         "link": "https://ygoprodeck.com/control-gravekeepers-december-2020/",
     }
 ]
@@ -125,7 +125,7 @@ var extra = [
     {
         "name": "PS Kaiba Add-On",
         "price": 15.99,
-        "image": "./images/pskaiba.jpg"
+        "image": "./images/PSKAIBA.jpg"
     },
     //extra product 5
     {
@@ -140,7 +140,7 @@ var fromsoftware = [
     {
         "name": "Yhorm the Giant",
         "price": 30.00,
-        "image": "./images/yhorm.jpg"
+        "image": "./images/Yhorm.jpg"
     },
     //fromsoftware product 2
     {
@@ -173,7 +173,7 @@ var treasure = [
     //treasure product 1
     {
         "name": "Darkeater Midir",
-        "price": 20.00,
+        "price": 40.99,
         "image": "./images/darkeatermidir.jpg"
     },
     //treasure product 2
@@ -191,13 +191,13 @@ var treasure = [
     //treasure product 4
     {
         "name": "Yharnam View",
-        "price": 25.99,
+        "price": 40.99,
         "image": "./images/yharnam.jpg"
     },
     //treasure product 5
     {
         "name": "Disneyland in Lothric",
-        "price": 25.99,
+        "price": 40.99,
         "image": "./images/darkdisneyland.jpg"
     }
 ]
