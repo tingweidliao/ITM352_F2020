@@ -1,181 +1,247 @@
 <!-- David Liao
 HTML page for the main page containing information on Anti-meta Yugioh 
-2 Dec 2020 -->
+16 Dec 2020
+Videos, GIFS and posters taken from Vatividya, BonfireVN, and various sources on the internet. -->
+<!DOCTYPE HTML>
+<html>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Anti-Meta Yugioh Shop</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-      
-        <link href="./stylesheets/products-style1.css" rel="stylesheet">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<head>
 
-
-<script src="./products.js" type="text/javascript">
-
-// Chocolate chip COOKIES! 
-
-function getCookie(cname) {
-            var name = cname + "=";
-            var decodedCookie = decodeURIComponent(document.cookie); //decodes cookie
-            var ca = decodedCookie.split(';'); 
-            for (var i = 0; i < ca.length; i++) { 
-                var c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return "";
-        };
-
-
-
-</script>
+    <title>Komoney Gaming Product Line</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--loads in products.js file-->
+    <script src="./products.js" type="text/javascript"></script>
+    <!--loads in necessary css and js files from templare -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/skel-layers.min.js"></script>
+    <script src="js/init.js"></script>
+    <link rel="stylesheet" href="css/skel.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-xlarge.css" />
+</head>
 <script>
-
-    // retrieved from assignment 1 example 
-
-    function isNonNegInt(q, return_errors = false) { // this function checks if customer input in textbox is valid or invalid
-
-
-        errors = []; // assume no errors at first
-        if (q == '') q = 0; //sets blank inputs to the quantitiy of 0 
-        if (Number(q) != q) errors.push('<font color="red">Not a number!</font>'); // Check if string is a number value
-        else if (q < 0) errors.push('<font color="red">Negative value!</font>'); // Check if the string is non-negative
-        else if (parseInt(q) != q) errors.push('<font color="red">Not a full value!</font>'); // Check that it is an integer
-        return return_errors ? errors : (errors.length == 0);
-    }
-
-    // this function checks if customer input quantity is in the textbox
-
-    function checkQuantityTextbox(theTextbox) {
-        errs = isNonNegInt(theTextbox.value, true);
-        if (errs.length == 0) errs = ['You want:']; //changes it to say you want ___
-        if (theTextbox.value.trim() == '') errs = ['Quantity'];
-        document.getElementById(theTextbox.name + '_label').innerHTML = errs.join(", ");
-    }
-    window.onload = function () {
-        let params = (new URL(document.location)).searchParams; // get the query string which has the form data
-        // form was submitted so check that quantities are valid then redirect to invoice if ok.
-        if (params.has('submitPurchase')) {
-            has_errors = false; // assume quantities are valid from the start
-            total_qty = 0; // need to check if something was selected so we will look if the total > 0
-            //For every product in the array display its image and name and list price
-            for (i = 0; i < products.length; i++) {
-                if (params.has(`quantity${i}`)) {
-                    a_qty = params.get(`quantity${i}`);
-                    // make textboxes sticky in case of invalid data
-                    product_main_display[`quantity${i}`].value = a_qty;
-                    total_qty += a_qty;
-                    if (!isNonNegInt(a_qty)) {
-                        has_errors = true; // invalid quantity
-                        checkQuantityTextbox(product_main_display[`quantity${i}`]); // show where the error is
-                    }
-                }
+    //made with help from oder page ex4
+    //made with help from w3schools.com 
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie); //decodes cookie
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
             }
-            // Now respond to errors or redirect to invoice if all is ok
-            if (has_errors) {
-                alert("Please enter only valid quantities!");
-            } else if (total_qty == 0) { // no quantity selections
-                alert("Please select some quantities!");
-            } else { // all good to go!
-                window.location = `./invoice.html${document.location.search}`; //Redirects itself to invoice
-                window.stop;
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
             }
         }
+        return "";
+    };
+
+    //ensures postive intengers 
+    function isNonNegInt(q, return_errors = false) {
+        errors = []; // assume no errors at first
+        if (q == "") q = 0; //blank inputs are 0
+        if (Number(q) != q) errors.push('<font color="red">Not a number</font>'); //sees if string is a number
+        if (q < 0) errors.push('<font color="red">Negative number</font>'); //ensures it is non-negative
+        if (parseInt(q) != q) errors.push('<font color="red">Not a full product</font>'); //sees if it is a full number
+        return return_errors ? errors : (errors.length == 0); //gives errors if there are some 
+    }
+
+    function checkQuantityTextbox(theTextbox) { //gives error message with invalid input 
+        errs = isNonNegInt(theTextbox.value, true); //sets variable 'errs'
+        document.getElementById(theTextbox.name + '_message').innerHTML = errs.join(", "); //setting it to error message 
+    }
+
+    window.onload = function() { //page is loaded before function 
+        let params = (new URL(document.location)).searchParams; //retrieves the query string for the data 
+
+        if (params.has('purchase_submit_button')) { //checks that quantites are valid
+            errors = false; //assumes no errors 
+            total_qty = 0; //must check if something was selected (>0)
+
+            for (i = 0; i < allProducts[product].length; i++) { //this is for every product
+
+                if (params.has(`quantity_textbox${i}`)) { // check textbox for numbers 
+                    qty = params.get(`quantity_textbox${i}`); //get the value for quantity_textbox and makes it sticky 
+                    quantity_form[`quantity_textbox${i}`].value = qty; //setting to variable qty 
+                    total_qty += qty; // adds the most recent textboxes 
+
+                    if (!isNonNegInt(qty)) { //if it was not valid 
+                        errors = true;
+                        checkQuantityTextbox(quantity_form[`quantity_textbox${i}`]); //returns error message 
+                    }
+
+                }
+
+            }
+
+            if (errors) { //responds or redirects to invoice 
+                alert("Please enter valid product amounts");
+            } else if (total_qty == 0) { //must select some products 
+                alert("Please select a product before submitting your purchase order");
+            }
+
+        }
+
     }
 </script>
 
-        <style>
-          /* Code & page template taken from w3 schools @ https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_store&stacked=h */ 
-          .navbar {
-            margin-bottom: 50px;
-            border-radius: 0;
-          }
-          
-          /* Remove the jumbotron's default bottom margin */ 
-           .jumbotron {
-            margin-bottom: 0;
-          }
-         
-          /* Add a gray background color and some padding to the footer */
-          footer {
-            background-color: #f2f2f2;
-            padding: 25px;
-          }
-        </style>
-      </head>
+</head>
 
-<body>
-    <!--creates the navigation bar-->
+<body id="top">
+
+    <!-- Header -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!DOCTYPE html>
+    <html>
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>                        
-            </button>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="./index.html">Home</a></li>
-              <li><a href="./products_display.html">Products</a></li>
-              <li><a href="./contactme.html">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Login/ Make Account</a></li>
-              <li><a href="Invoice.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!--creates the product display page with product name, image, price and section for quantity-->
-    <form name="product_main_display" action="/process_purchase" method="POST">
-        <div>
-            <main>
-                <script>
-                    for (i = 0; i < products.length; i++) {
-                        document.write(`
-                                <section class="item">
-                                    <h2>${products[i].product}</h2>
-                                    <br><img src="${products[i].image}">
-                                    <p>$${products[i].price}</p>
-                                    <label id="quantity${i}_label"}">Quantity</label>
-                                    <input type="text" placeholder="0" name="quantity${i}" 
-                                    onkeyup="checkQuantityTextbox(this);">
-                
-                                </section>
-                            `);
-                    }      
-                </script>
-            </main>
-        </div>
-        <footer>
-            <!--creates the purchase button-->
-            <input type="submit" value="Purchase!" name="submitPurchase" class=btn>
-        </footer>
-    </form>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>                        
+  </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="./index.html">Home</a></li>
+                    <li><a href="./products_display.html">Products</a></li>
 
-<!--  Email signup for news alert. Code taken from w3 schools -->
+                    <li><a href="./contactme.html">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Login/ Make Account</a></li>
 
-<footer class="container-fluid text-center">
-    <p> <h1>
-      Enjoy destroying this month's meta!
-  </h1></p>  
-    <form class="form-inline">Alert me for next month's anti-meta:
-      <input type="email" class="form-control" size="50" placeholder="Email Address">
-     <a href='./confirm_email.html'><button type="button" class="btn btn-danger">Sign Up</button></a> 
-    </form>
-  </footer>
+                    <li><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <a href="./cart.html">
+        <script>
+            var cart = sessionStorage.length;
+            if (cart > 0) {
+                document.write(`
+                                            <p><font color="#555f66"> Shopping Cart </font> <font color="#629DD1">(${cart})</font></p>
+                                        `)
+            } else {
+                document.write(`<p> <font color="#555f66"> Shopping Cart </font> </p> `)
+            };
+        </script>
+    </a>
+    </li>
+    </ul>
+    </nav>
+    </header>
+
+    <!-- One -->
+    <section id="one" class="wrapper style1">
+        <header class="major">
+            <h2>Shop from our latest additions!</h2>
+
+            <video width=" 800 " height="500 " autoplay>
+        <source src="./video/darkeaterlaser.mp4 " type="video/mp4 ">
+        <source src="./video/darkeaterlaser.mp4 " type="video/ogg ">
+            <p>Defeat the meta and beat the odds!</p>
+        </header>
+        <div class="container">
+            <div class="row">
+                <div class="4u">
+                    <section class="special box">
+                        <a href="./consoles.html"><img src="./images/Consoles.jpg" width="100%" height="100%"></a>
+                        <h3>Gaming Consoles</h3>
+                        <p>Get in on the action for the latest gaming consoles, while they are still in stock!</p>
+                    </section>
+                </div>
+                <div class="4u">
+                    <section class="special box">
+                        <a href="./extraextra.html"> <img src="./images/surprise.jpg" width="100%" height="100%"></a>
+                        <h3>Extra products</h3>
+                        <p>Find gag reel worthy items here! </p>
+                    </section>
+                </div>
+                <div class="4u">
+                    <section class="special box">
+                        <a href="./yugioh.html"> <img src="./images/yugi_exodia.jpg" width="100%" height="100%"> </a>
+                        <h3>Anti-Meta Yugioh</h3>
+                        <p>Our flagship store front promoting the premier anti-meta Yugioh decks!</p>
+                    </section>
+                </div>
+                <div class="5u">
+                    <section class="special box">
+                        <a href="./fromsoft.html"> <img src="./images/uLuW0iZ.jpeg" width="100%" height="100%"> </a>
+                        <h3>Fromsoftware Shrine</h3>
+                        <p>Check out our newest collection, recently sponsered by our new exclusive partnership with Fromsoftware! </p>
+                    </section>
+                </div>
+                <div class="6u">
+                    <section class="special box">
+                        <a href="./treasure.html"> <img src="./images/chest.jpg" width="100%" height="100%"> </a>
+                        <h3>Treasure Trove</h3>
+                        <p>Find our favorite collection of art!</p>
+                    </section>
+
+    </section>
+    </div>
+    </div>
+    </div>
+    </section>
+
+    <div id="wrapper">
+        <section id="cta" class="main special">
+            <!-- Section to review account information -->
+
+            <h2>Account Information</h2>
+            <script>
+                var theUser = getCookie('name');
+                var theUsername = getCookie('username');
+                var email = getCookie('email');
+                var lastVisited = getCookie('last_login_time');
+                if (theUsername != '') {
+                    document.write(`
+                            <p>Logged in as: <font color="#629DD1">${theUsername}</font>.   Not you? <a href= "login.html" style=style="color": #629DD1> Log in </a> or <a href= "register.html" style=style="color": #629DD1>register an account</a> <p> 
+                            <p>Last log-in: <font color="#629DD1">${lastVisited}</font></p>
+                        `)
+                } else {
+                    document.write(`
+                            <p>Not logged in. Please log in <a href="login.html" style="color": #629DD1; font-size: 1em; font-family: inherit;">here</a></p>
+                        `)
+                };
+                var cart = sessionStorage.length;
+                if (cart > 0) {
+                    console.log(
+                        cart
+                    )
+                };
+            </script>
+
+        </section>
+
+    </div>
+
+
+    <!--  Email signup for news alert. Code taken from w3 schools -->
+
+
+
+    <section id="banner">
+        <div class="inner">
+            <h2>Alert me for news updates:</h2>
+            <input type="email" class="form-control" size="50" placeholder="Email Address">
+            <a href='./confirm_email.html'><button type="button" class="button big special">Sign Up</button></a>
+            <ul class="actions">
+
+            </ul>
+        </div>
+    </section>
+
 
 </body>
+
 </html>

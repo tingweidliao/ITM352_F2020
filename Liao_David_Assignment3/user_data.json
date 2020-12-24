@@ -1,1 +1,27 @@
-{"dport":{"name":"dport","password":"portspass","email":""},"kazman":{"name":"Rick Kazman","password":"kazmanpassword","email":"kazman@hawaii.edu"},"itm352":{"name":"ITM 352","password":"grader","email":"itm352@hawaii.edu"},"newuser":{"name":"Joe Schmoe","password":"newpass","email":"newuser@user.com"},"Bobby":{"name":"Bobby","password":"asdf","email":"bobby@gmail.com"},"Lou":{"name":"Lou","password":"asdf","email":"lou@lou.com"},"Shmo":{"name":"Shmo","password":"asdf","email":"lou@lou.com"},"dliao":{"name":"dliao","password":"123456","email":"davidliao24@gmail.com"},"tliao240":{"name":"tliao240","password":"456789"},"deeliao24":{"name":"deeliao24","password":"123456","email":"davidliao24@gmail.com"},"Loudred":{"name":"Loudred","password":"456789","email":"lourdesrjohnson@hotmail.com"},"Roxoroxo":{"name":"Roxoroxo","password":"ilovepate","email":"roxy@gmail.com"}}
+{
+  "itm352": {
+    "name": "ITM 352",
+    "password": "grader",
+    "email": "grader@hawaii.edu"
+  },
+  "deeliao": {
+    "name": "David Liao",
+    "password": "123456",
+    "email": "tliao240@hawaii.edu"
+  },
+  "dliao": {
+    "name": "David Liao",
+    "password": "123456",
+    "email": "davidliao24@gmail.com"
+  },
+  "tliao240": {
+    "name": "david liao",
+    "password": "roxyroxy",
+    "email": "tliao240@hawaii.edu"
+  },
+  "Kaibaboi": {
+    "name": "Seto Kaiba",
+    "password": "blueeyes",
+    "email": "kaiba@hawaii.edu"
+  }
+}

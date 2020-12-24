@@ -1,98 +1,192 @@
 <!-- David Liao
-Anti-Meta Registration Page-->
-
-<!--from lab 14 example and retrieved from ww3schools.com-->
+Komoney Gaming Registration Page
+Videos, GIFS and posters taken from Vatividya, BonfireVN, and various sources on the internet.-->
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <script>
-        let params = (new URL(document.location)).searchParams;
 
-        window.onload = function () { // creating the function for window.onload
-            //if there are errors it tells the user 
-            if (params.has('errors')) {
-
-                console.log("invalid");
-                alert('Fix the following errors: \n' + params.get('errors'));
-            }
-        }    
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./stylesheets/login&registration1.css">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Oswald">
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <title>Register an Account!</title>
-
-    <!--this sets the background image and helps style the page-->
-    <style>
-       body {
-        background-image: url(./images/divinebeasts.jpg);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 100%;
-        opacity: .9;
-
-       };
-    </style>
+    <title>Registration Page</title>
+    <!--loads in css and js files from template-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/skel-layers.min.js"></script>
+    <script src="js/init.js"></script>
+    <link rel="stylesheet" href="css/skel.css" />
+    <link rel="stylesheet" href="css/stylelogin.css" />
+    <link rel="stylesheet" href="css/style-xlarge.css" />
 </head>
 
-<body>
+<body id="top">
+
+    <!-- Header -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!DOCTYPE html>
+    <html>
+
     <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="./index.html">Home</a></li>
-          <li><a href="./products_display.html">Products</a></li>
-          <li><a href="./contactme.html">Contact</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Login/ Make Account</a></li>
-          <li><a href="Invoice.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>                        
+  </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="./index.html">Home</a></li>
+                    <li><a href="./products_display.html">Products</a></li>
 
-    <h1><mark>  Register an account with Anti-Meta Yugioh before your purchase!   
-    </mark>
-    </h1>
-    <!--creates the form for users to register, used code from w3schools.com-->
-    <div id='account'>
-        <form method="POST" action="process_register" name="Register">
-            <input type="text" name="fullname" size="40" pattern="[a-zA-Z]+[ ]+[a-zA-Z]+"
-                placeholder="Enter First & Last Name"><br />
-            <input type="text" name="username" size="40" pattern=".[a-z0-9]{3,10}" required
-                title="Minimum 4 Characters, Maximum 10 Characters, Numbers/Letters Only"
-                placeholder="Enter Username"><br />
-            <input type="email" name="email" size="40" placeholder="Enter Email"
-                pattern="[a-z0-9._]+@[a-z0-9]+\.[a-z]{3,}$" required title="Please enter valid email."><br />
-            <input type="password" id="password" name="password" size="40" pattern=".{6,}" required
-                title="6 Characters Minimum" placeholder="Enter Password"><br />
-            <input type="password" id="repeat_password" name="repeat_password" size="40" pattern=".{6,}" required
-                title="6 Characters Minimum" placeholder="Repeat Password"><br />
+                    <li><a href="./contactme.html">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Login/ Make Account</a></li>
 
-            <input type="submit" value="Register" class="btn">
-        </form>
+                    <li><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <a href="./cart.html">
         <script>
-            Register.action += document.location.search; //saves the query string from the products page for the invoice
+            var cart = sessionStorage.length;
+            if (cart > 0) {
+                document.write(`
+                                            <p><font color="#555f66"> Shopping Cart </font> <font color="#629DD1">(${cart})</font></p>
+                                        `)
+            } else {
+                document.write(`<p> <font color="#555f66"> Shopping Cart </font> </p> `)
+            };
         </script>
-    </div>
-    <!--this is the button that will take users to login if they already have an account-->
-    <input type="button" name="olduser" value="Returning Users Click Here!" class="btn2"
-        onclick="window.location='./login.html' + document.location.search;">
+    </a>
+    </li>
+    </ul>
+    </nav>
+    </header>
+    <!-- Ask user to log in -->
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <h2>Thank You for your support!</h2>
+            <p>Please create an account below</p>
+            <ul class="actions">
+                <li><a href="./login.html" class="button special">returning? login here</a></li>
+            </ul>
+
+
+            <video width=" 500 " height="300 " autoplay>
+                <source src="./video/yhormVSdemonprince.mp4 " type="video/mp4 ">
+                <source src="./video/pumped.mp4 " type="video/ogg ">
+                </iframe>
+                </video>
+        </div>
+    </section>
+
+    <!-- Made with help from lab14 exercise 4-->
+    <form name="registration_form" action="javascript:register_user();" method="GET">
+        <br>
+        <center>
+            <input type="text" name="name" size="40" placeholder="Enter Name">
+            <span id="name_message"></span>
+            <input type="text" name="username" size="40" placeholder="Enter Username">
+            <span id="username_message"></span>
+            <input type="email" name="email" size="40" placeholder="Enter Email">
+            <span id="email_message"></span>
+            <input type="password" name="password" size="40" placeholder="Enter Password">
+            <span id="password_message"></span>
+            <input type="password" name="repeat_password" size="40" placeholder="Confirm Password">
+            <span id="repeat_password_message"></span>
+            <br> </center>
+        <center><input type="submit" value="Register" id="submit" name="register_button"></center>
+
+    </form>
+
+    <script>
+        //made with help from w3schools.com
+        function setCookie(cname, cvalue, exdays) { //sets cookie
+            var d = new Date(); //today's date
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000)); //expiration is set to a day after inital login
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function eraseCookie(name) {
+            document.cookie = name + '=; Max-Age=-99999999;';
+        }
+
+        //made with help from stackoverflow.com, allows one to return to previous page after login 
+        function GoBackWithRefresh(event) {
+            var past = document.referrer;
+            var pastPage = past.split('/').pop();
+
+            if (pastPage != 'login.html' && pastPage != 'register.html') {
+                window.location = past;
+            } else if (pastPage == 'login.html' && pastPage == 'register.html') {
+                window.history.go(-2);
+            } else {
+                window.location.href = './index.html';
+            }
+
+        };
+
+        //Made with help from microservice example 
+        function register_user() { //validates on the server 
+            data = new URLSearchParams(new FormData(registration_form)); // sets variable 
+
+            fetch('/register_user', //gets response from app post
+                {
+                    method: 'post',
+                    body: data,
+                    redirect: 'follow'
+                }
+            ).then(function(response) {
+
+                if (response.ok) {
+
+                    response.json().then(function(errors) {
+
+                        if (Object.keys(errors).length == 0) {
+                            sessionStorage.clear(); //resets the session
+                            var theDate = JSON.stringify(Date()); //has time of login
+                            var username = registration_form.username;
+                            var userEmail = registration_form.email;
+                            var user_name = registration_form.name;
+                            setCookie('last_login_time', JSON.parse(theDate), 'username', username, 'email', userEmail, 'name', user_name);
+                            response.redirect(GoBackWithRefresh());
+                        } else {
+
+                            for (errorId in errors) {
+                                document.getElementById(errorId + '_message').innerHTML = errors[errorId];
+                            }
+
+                        }
+
+                    });
+
+                } else {
+                    console.log('Network request for /register_user failed with response ' + response.status + ': ' + response.statusText);
+                }
+
+            });
+        }
+    </script>
+
 </body>
 
 </html>
